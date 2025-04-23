@@ -1,9 +1,14 @@
 import { NextResponse } from 'next/server';
 import { readKeepItKey, writeKeepItKey, generateKey } from '@/utils/keepit/keyManager';
+import { z } from 'zod';
 import path from 'path';
+import dotenv from 'dotenv';
+
+dotenv.config(); // Load environment variables from .env file
 
 import WriteFile from '@/utils/writeFile';
 import ReadJsonFile from '@/utils/readJsonFile';
+import RateLimit from '@/utils/rateLimit';
 
 // Get the path of KeepIt's data
 const KeepItDataPath: string = path.join(process.cwd(), 'src/data/keepit/data.json');
@@ -19,8 +24,16 @@ const KeepItDataPath: string = path.join(process.cwd(), 'src/data/keepit/data.js
  * - On failure: An appropriate error response (not explicitly handled in this function).
 */
 export async function GET() {
-  const StoredData = ReadJsonFile(KeepItDataPath);
-  return NextResponse.json({ data: StoredData });
+  // Get the KeepIt API data
+  const StoredData = await ReadJsonFile(KeepItDataPath);
+  // Return the data to the client
+  return NextResponse.json({ data: [ StoredData ] });
+}
+
+// Function to throw a Next.js error message
+function CreateErrorResponse(message: string, status: number) {
+  // Return an error message
+  return NextResponse.json({ error: message }, { status });
 }
 
 /**
@@ -38,36 +51,86 @@ export async function GET() {
  * - On success: `{ success: true, data: <updated data> }` with a 200 status.
  * - On failure:
  *   - `{ error: 'Unauthorized.' }` with a 401 status if the `Authorization` header is missing or invalid.
- *   - `{ error: 'No data provided' }` with a 400 status if the request body is empty or invalid.
+ *   - `{ error: 'No data provided.' }` with a 400 status if the request body is empty or invalid.
 */
 export async function POST(req: Request) {
+  async function handleRateLimit(req: Request): Promise<boolean> {
+    const isRateLimited = RateLimit(req);
+    if (isRateLimited) {
+      console.log("Too many requests.");
+      return true;
+    }
+    return false;
+  }
+
   // Variables
-  const AuthorizationHeader = req.headers.get('Authorization');
-  const CurrentKey = readKeepItKey();
+  const AuthorizationHeader: string | null = req.headers.get('X-Authorization');
+  const BotHeader: string | null = req.headers.get('X-Bot');
+  const IDHeader: string | null = req.headers.get('X-ID');
+  const CurrentKey: string = await readKeepItKey();
+  const BotID: string | null = process.env.KEEPIT_BOT_ID ? process.env.KEEPIT_BOT_ID : null;
 
   // Check if the authorization header key is correct
   if (!AuthorizationHeader || AuthorizationHeader !== `Bearer ${CurrentKey}`) {
-    return NextResponse.json({ error: 'Unauthorized.' }, { status: 401 });
+    // Rate limiting
+    if (await handleRateLimit(req)) {
+      return CreateErrorResponse('Too many requests.', 429);
+    }
+    return CreateErrorResponse('Unauthorized.', 401);
   }
 
-  const body = await req.json();
+  // Check if the bot header key is correct
+  if (!BotHeader || BotHeader !== `True`) {
+    // Rate limiting
+    if (await handleRateLimit(req)) {
+      return CreateErrorResponse('Too many requests.', 429);
+    }
+    return CreateErrorResponse('Unauthorized.', 401);
+  }
 
-  // Check if the body is empty
-  if (!body || Object.keys(body).length === 0) {
-    return NextResponse.json({ error: 'No data provided' }, { status: 400 });
+  // Check if the bot header key is correct
+  if (!IDHeader || IDHeader !== `${BotID}`) {
+    // Rate limiting
+    if (await handleRateLimit(req)) {
+      return CreateErrorResponse('Too many requests.', 429);
+    }
+    return CreateErrorResponse('Unauthorized.', 401);
+  }
+
+  console.log(req) // Debug request
+
+  // Define the structure of the body
+  const BodySchema = z.object({
+    userCount: z.number(),
+    serverCount: z.number(),
+    commandCount: z.number(),
+    applicationCmdCount: z.number(),
+  });
+  
+  let Body;
+  try {
+    Body = await req.json();
+  } catch (error) {
+    return CreateErrorResponse('Invalid JSON format.', 400);
+  }
+  const ParsedBody = BodySchema.safeParse(Body);
+  
+  // Check the body has the correct format
+  if (!ParsedBody.success) {
+    return CreateErrorResponse('Invalid data format.', 400);
   }
 
   // Overwrite the file with the new body
-  WriteFile(KeepItDataPath, body);
+  await WriteFile(KeepItDataPath, Body);
 
   // Generate new key
   const NewKey = generateKey(128);
-  writeKeepItKey(NewKey);
-  console.log(`[API] New key for KeepIt API generated: ${NewKey}`);
+  await writeKeepItKey(NewKey);
+  console.log(`New key for KeepIt API generated: ${NewKey}`);
 
   // JSON response
   return NextResponse.json({
     success: true,
-    data: body
+    data: [ Body ]
   });
 }

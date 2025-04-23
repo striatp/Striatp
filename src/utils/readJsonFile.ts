@@ -1,19 +1,18 @@
-import fs from 'fs'
+import fs from 'fs/promises';
 
 /**
- * Reads and parses a JSON file from the specified path.
+ * Reads and parses a JSON file asynchronously.
  *
- * @template T - The expected type of the parsed JSON data. Defaults to `any`.
- * @param {string} path - The file path to read the JSON data from.
- * @returns {T} - The parsed JSON data as the specified type.
- * @throws {Error} - Throws an error if the file cannot be read or parsed.
+ * @template T - The expected type of the parsed JSON data.
+ * @param path - The file path to read the JSON from.
+ * @returns The parsed JSON data.
 */
-export default function readJsonFile(path: string): JSON {
-    try {
-        const file = fs.readFileSync(path, 'utf-8');
-        return JSON.parse(file);
-    } catch (error) {
-        console.error(`Error reading or parsing file at ${path}:`, error);
-        throw error;
-    }
+export default async function readJsonFile<T = any>(path: string): Promise<T> {
+  try {
+    const file = await fs.readFile(path, 'utf-8');
+    return JSON.parse(file);
+  } catch (error) {
+    console.error(`Error reading or parsing file at ${path}:`, error);
+    throw error;
+  }
 }
