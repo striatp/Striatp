@@ -1,15 +1,34 @@
 "use client"
 
-import React from "react";
+import { JSX } from 'react';
 
-export default function Home() {
-  const [likes, setLikes] = React.useState(0)
-  function handleClick() {
-    setLikes(likes + 1);
-  }
+import Header from '@components/Header';
+import Hero from '@components/Hero';
+import Features from '@/components/Features';
+import Projects from '@components/Projects';
+import Container from '@/components/Container';
+import Link from 'next/link';
+import Stats from '@components/Stats';
+import Footer from '@components/Footer';
+
+export default function Home(): JSX.Element {
   return (
-    <div className="flex justify-center text-teal-400 border-4 border-t-fuchsia-800">
-      <button className="border-[45]" onClick={handleClick}>Likes ({likes})</button>
-    </div>
+    <>
+      <Header></Header>
+      <Hero></Hero>
+      <Features></Features>
+      <Projects></Projects>
+      <Container>
+        <section>
+          <div>
+            <h2>Rejoignez notre communauté</h2>
+            <p>Contribuez à nos projets open source et participez à l'innovation technologique.</p>
+            <Link href={"https://github.com/RaviumLabs"}>Découvrir sur GitHub</Link>
+          </div>
+          <Stats></Stats>
+        </section>
+      </Container>
+      <Footer></Footer>
+    </>
   );
 }
