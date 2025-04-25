@@ -6,23 +6,43 @@ import GitHub from '@icons/GitHub';
 import LinkedIn from '@icons/LinkedIn';
 import Twitter from '@icons/Twitter';
 
+import Icon from "@components-types/Icon";
+
+import { ComponentMetadata } from '@/types/component-metadata';
+
+const metadata: ComponentMetadata = {
+  title: "Footer Component",
+  description: "This is the footer component for the Ravium Labs website.",
+  author: "Ravium Labs",
+  keywords: ["Footer", "Ravium Labs", "React", "Next.js", "Component"],
+  embed: {
+    color: "#0f172a",
+    image: "https://example.com/footer-image.png",
+  },
+};
+
 export default function Footer(): JSX.Element {
   return (
-    <footer className='bg-[#1e293b] text-white pt-4 pr-0 pl-0 pb-2'>
+    <footer className='bg-[#1e293b] text-white pt-14 pr-0 pl-0 pb-2' style={{
+      backgroundImage: "url('footer-bg.svg')",
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+    }}>
       <Container>
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-8 mb-12 pt-7">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-8 mb-12 pt-14">
           <div>
             <h4 className='text-xl mb-6 font-semibold'>Ravium Labs</h4>
             <p className='block my-4 mx-0'>Développement de solutions open source innovantes et accessibles.</p>
             <div className='flex gap-4 mt-6'>
-              <Link href="#" className='w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-300 hover:text-white transition duration-200 hover:bg-white/15'>
-                <GitHub></GitHub>
+              <Link href="https://github.com/RaviumLabs" className='w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-300 hover:text-white transition duration-200 hover:bg-white/15'>
+                <Icon><GitHub></GitHub></Icon>
               </Link>
               <Link href="#" className='w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-300 hover:text-white transition duration-200 hover:bg-white/15'>
-                <LinkedIn></LinkedIn>
+                <Icon><LinkedIn></LinkedIn></Icon>
               </Link>
               <Link href="#" className='w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-300 hover:text-white transition duration-200 hover:bg-white/15'>
-                <Twitter></Twitter>
+                <Icon><Twitter></Twitter></Icon>
               </Link>
             </div>
           </div>
@@ -31,7 +51,7 @@ export default function Footer(): JSX.Element {
             <ul className="block my-4 text-gray-300">
               <li className='pb-2'><Link href={"/features"} className='hover:text-white transition duration-200 hover:underline'>Fonctionnalités</Link></li>
               <li className='pb-2'><Link href={"/projects"} className='hover:text-white transition duration-200 hover:underline'>Projets</Link></li>
-              <li className='pb-2'><Link href={"/about"} className='hover:text-white transition duration-200 hover:underline'>A propos</Link></li>
+              <li className='pb-2'><Link href={"/about"} className='hover:text-white transition duration-200 hover:underline'>À propos</Link></li>
               <li className='pb-2'><Link href={"https://github.com/RaviumLabs"} className='hover:text-white transition duration-200 hover:underline'>GitHub</Link></li>
             </ul>
           </div>

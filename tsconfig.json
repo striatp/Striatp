@@ -26,6 +26,8 @@
       "@icons/*": ["./src/components/ui/icons/*"],
       "@animations/*": ["./src/components/ui/animations/*"],
       "@hover/*": ["./src/components/animations/hover/*"],
+      "@types/*": ["./src/types/*"],
+      "@components-types/*": ["./src/components/types/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

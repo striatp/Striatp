@@ -13,7 +13,7 @@ import Footer from '@components/Footer';
 
 export default function Home(): JSX.Element {
   return (
-    <>
+    <div className='bg-[#1e293b] text-white min-h-screen'>
       <Header></Header>
       <Hero></Hero>
       <Features></Features>
@@ -29,6 +29,6 @@ export default function Home(): JSX.Element {
         </section>
       </Container>
       <Footer></Footer>
-    </>
+    </div>
   );
 }
