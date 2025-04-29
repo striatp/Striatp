@@ -15,19 +15,21 @@ export default function Home(): JSX.Element {
   return (
     <div className='bg-[#1e293b] text-white min-h-screen'>
       <Header></Header>
-      <Hero></Hero>
-      <Features></Features>
-      <Projects></Projects>
-      <Container>
-        <section>
-          <div>
-            <h2>Rejoignez notre communauté</h2>
-            <p>Contribuez à nos projets open source et participez à l'innovation technologique.</p>
-            <Link href={"https://github.com/RaviumLabs"}>Découvrir sur GitHub</Link>
-          </div>
-          <Stats></Stats>
-        </section>
-      </Container>
+      <div className='flex justify-center items-center flex-col'>
+        <Hero></Hero>
+        <Features></Features>
+        <Projects></Projects>
+        <Container>
+          <section>
+            <div>
+              <h2>Rejoignez notre communauté</h2>
+              <p>Contribuez à nos projets open source et participez à l'innovation technologique.</p>
+              <Link href={"https://github.com/RaviumLabs"}>Découvrir sur GitHub</Link>
+            </div>
+            <Stats></Stats>
+          </section>
+        </Container>
+      </div>
       <Footer></Footer>
     </div>
   );

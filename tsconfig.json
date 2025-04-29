@@ -23,11 +23,11 @@
       "@utils/*": ["./src/utils/*"],
       "@components/*": ["./src/components/*"],
       "@ui/*": ["./src/components/ui/*"],
-      "@icons/*": ["./src/components/ui/icons/*"],
-      "@animations/*": ["./src/components/ui/animations/*"],
+      "@animations/*": ["./src/components/animations/*"],
       "@hover/*": ["./src/components/animations/hover/*"],
       "@types/*": ["./src/types/*"],
-      "@components-types/*": ["./src/components/types/*"]
+      "@components-types/*": ["./src/components/types/*"],
+      "@structure/*": ["./src/components/structure/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
