@@ -26,6 +26,7 @@
       "@animations/*": ["./src/components/animations/*"],
       "@hover/*": ["./src/components/animations/hover/*"],
       "@types/*": ["./src/types/*"],
+      "@children": ["./src/types/childrenProps.ts"],
       "@components-types/*": ["./src/components/types/*"],
       "@structure/*": ["./src/components/structure/*"]
     }

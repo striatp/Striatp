@@ -8,12 +8,21 @@ import Twitter from '@/components/icons/Twitter';
 
 import Icon from "@components-types/Icon";
 
-import { ComponentMetadata } from '@/types/component-metadata';
+import ComponentMetadata from '@/types/component-metadata';
 
-const metadata: ComponentMetadata = {
+const componentMetadata: ComponentMetadata = {
   title: "Footer Component",
   description: "This is the footer component for the Ravium Labs website.",
   author: "Ravium Labs",
+  componentName: "Footer",
+  category: "Layout",
+  usage: "Beta",
+  createdAt: "2025-04-25",
+  updatedAt: "2025-04-29",
+  version: "1.0.0",
+  private: false,
+  visibleInNav: false,
+  requiresAuth: false,
   keywords: ["Footer", "Ravium Labs", "React", "Next.js", "Component"],
   embed: {
     color: "#0f172a",
@@ -51,7 +60,7 @@ export default function Footer(): JSX.Element {
           <div>
             <h4 className='text-2xl mb-6 font-semibold'>Liens</h4>
             <ul className="block my-4 text-gray-300">
-              <li className='pb-2'><Link href={"/features"} className='hover:text-white transition duration-200 hover:underline'>Fonctionnalités</Link></li>
+              <li className='pb-2'><Link href={"#features"} className='hover:text-white transition duration-200 hover:underline'>Fonctionnalités</Link></li>
               <li className='pb-2'><Link href={"/projects"} className='hover:text-white transition duration-200 hover:underline'>Projets</Link></li>
               <li className='pb-2'><Link href={"/about"} className='hover:text-white transition duration-200 hover:underline'>À propos</Link></li>
               <li className='pb-2'><Link href={"https://github.com/RaviumLabs"} className='hover:text-white transition duration-200 hover:underline'>GitHub</Link></li>
@@ -72,25 +81,25 @@ export default function Footer(): JSX.Element {
             <ul className="block my-4 text-gray-300">
               <li className='pb-2'><Link href={"mailto:contact@raviumlabs.com"} className='hover:text-white transition duration-200 hover:underline'>E-Mail</Link></li>
               <li className='pb-2'><Link href={"#"} className='hover:text-white transition duration-200 hover:underline'>Twitter</Link></li>
-              <li className='pb-2'><Link href={"#"} className='hover:text-white transition duration-200 hover:underline'>Discord</Link></li>
+              <li className='pb-2'><Link href={"https://discord.gg/Vd4mRcehwa"} className='hover:text-white transition duration-200 hover:underline'>Discord</Link></li>
             </ul>
           </div>
           {/* Support */}
           <div>
             <h4 className='text-2xl mb-6 font-semibold'>Aide</h4>
             <ul className="block my-4 text-gray-300">
-              <li className='pb-2'><Link href={"#"} className='hover:text-white transition duration-200 hover:underline'>Communauté</Link></li>
+              <li className='pb-2'><Link href={"/community"} className='hover:text-white transition duration-200 hover:underline'>Communauté</Link></li>
               <li className='pb-2'><Link href={"#"} className='hover:text-white transition duration-200 hover:underline'>Twitter</Link></li>
-              <li className='pb-2'><Link href={"#"} className='hover:text-white transition duration-200 hover:underline'>Discord</Link></li>
+              <li className='pb-2'><Link href={"https://discord.gg/Vd4mRcehwa"} className='hover:text-white transition duration-200 hover:underline'>Discord</Link></li>
             </ul>
           </div>
           {/* Legals */}
           <div>
             <h4 className='text-2xl mb-6 font-semibold'>Mentions légales</h4>
             <ul className="block my-4 text-gray-300">
-              <li className='pb-2'><Link href={"mailto:contact@raviumlabs.com"} className='hover:text-white transition duration-200 hover:underline'>Conditions d'utilisation</Link></li>
-              <li className='pb-2'><Link href={"#"} className='hover:text-white transition duration-200 hover:underline'>Politique de confidentialité</Link></li>
-              <li className='pb-2'><Link href={"/license"} className='hover:text-white transition duration-200 hover:underline'>Licence</Link></li>
+              <li className='pb-2'><Link href={"/legals/terms-of-service"} className='hover:text-white transition duration-200 hover:underline'>Conditions d'utilisation</Link></li>
+              <li className='pb-2'><Link href={"/legals/privacy-policy"} className='hover:text-white transition duration-200 hover:underline'>Politique de confidentialité</Link></li>
+              <li className='pb-2'><Link href={"/legals/license"} className='hover:text-white transition duration-200 hover:underline'>Licence</Link></li>
             </ul>
           </div>
         </div>

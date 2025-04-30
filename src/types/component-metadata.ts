@@ -21,7 +21,7 @@ export interface UsageExample {
   code: string;
 }
   
-export interface ComponentMetadata {
+export default interface ComponentMetadata {
   /** Display name of the component */
   title: string;
 
@@ -86,7 +86,7 @@ export interface ComponentMetadata {
   changelogUrl?: string;
 
   /** List of related or similar components */
-  relatedComponents?: string[];
+  relatedComponents?: any[];
 
   /** Code examples for docs or previews */
   examples?: UsageExample[];
