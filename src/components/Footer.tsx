@@ -81,7 +81,7 @@ export default function Footer(): JSX.Element {
             <ul className="block my-4 text-gray-300">
               <li className='pb-2'><Link href={"mailto:contact@raviumlabs.com"} className='hover:text-white transition duration-200 hover:underline'>E-Mail</Link></li>
               <li className='pb-2'><Link href={"#"} className='hover:text-white transition duration-200 hover:underline'>Twitter</Link></li>
-              <li className='pb-2'><Link href={"https://discord.gg/Vd4mRcehwa"} className='hover:text-white transition duration-200 hover:underline'>Discord</Link></li>
+              <li className='pb-2'><Link href={"/discord"} className='hover:text-white transition duration-200 hover:underline'>Discord</Link></li>
             </ul>
           </div>
           {/* Support */}
@@ -90,7 +90,7 @@ export default function Footer(): JSX.Element {
             <ul className="block my-4 text-gray-300">
               <li className='pb-2'><Link href={"/community"} className='hover:text-white transition duration-200 hover:underline'>Communauté</Link></li>
               <li className='pb-2'><Link href={"#"} className='hover:text-white transition duration-200 hover:underline'>Twitter</Link></li>
-              <li className='pb-2'><Link href={"https://discord.gg/Vd4mRcehwa"} className='hover:text-white transition duration-200 hover:underline'>Discord</Link></li>
+              <li className='pb-2'><Link href={"/discord"} className='hover:text-white transition duration-200 hover:underline'>Discord</Link></li>
             </ul>
           </div>
           {/* Legals */}
