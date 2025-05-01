@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Container from '@/components/Container';
-import StatsCard from '@components/StatsCard';
 
 export default function Home() {
   const [data, setData] = useState(null); // State to store API response
@@ -18,7 +17,7 @@ export default function Home() {
         const result = await response.json();
         setData(result); // Store the API response in state
         console.log(result)
-      } catch (err: any) {
+      } catch (err: any | unknown) {
         setError(err.message); // Handle errors
       } finally {
         setLoading(false); // Stop loading

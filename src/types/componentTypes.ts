@@ -156,7 +156,7 @@ export default interface ComponentMetadata {
  * This is useful for scenarios where only a subset of the `ComponentMetadata` 
  * properties are required or need to be specified.
 */
-type PartialComponentMetadata = Partial<ComponentMetadata>;
+export type PartialComponentMetadata = Partial<ComponentMetadata>;
 
 /**
  * Schema for defining metadata of a component.
