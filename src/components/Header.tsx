@@ -1,5 +1,6 @@
-
 import Link from 'next/link';
+import Image from 'next/image';
+
 import Underline from '@hover/Underline';
 import Icon from '@components-types/Icon';
 
@@ -14,7 +15,7 @@ export default function Header() {
         {/* Branding */}
         <Link href="/">
           <div className="flex items-center space-x-4">
-            <img src="logo.svg" alt="Ravium Labs Logo" className="h-8 w-auto" />
+            <Image src="logo.svg" alt="Ravium Labs Logo" className="h-8 w-auto" />
             <span className="text-xl font-semibold">Ravium <span className='text-[#6c8eaf]'>Labs</span></span>
           </div>
         </Link>

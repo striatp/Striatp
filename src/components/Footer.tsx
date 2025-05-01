@@ -10,7 +10,7 @@ import Icon from "@components-types/Icon";
 
 import ComponentMetadata from '@/types/componentTypes';
 
-const componentMetadata: ComponentMetadata = {
+export const componentMetadata: ComponentMetadata = {
   title: "Footer Component",
   description: "This is the footer component for the Ravium Labs website.",
   author: "Ravium Labs",
@@ -97,7 +97,7 @@ export default function Footer(): JSX.Element {
           <div>
             <h4 className='text-2xl mb-6 font-semibold'>Mentions légales</h4>
             <ul className="block my-4 text-gray-300">
-              <li className='pb-2'><Link href={"/legals/terms-of-service"} className='hover:text-white transition duration-200 hover:underline'>Conditions d'utilisation</Link></li>
+              <li className='pb-2'><Link href={"/legals/terms-of-service"} className='hover:text-white transition duration-200 hover:underline'>Conditions d&#39;utilisation</Link></li>
               <li className='pb-2'><Link href={"/legals/privacy-policy"} className='hover:text-white transition duration-200 hover:underline'>Politique de confidentialité</Link></li>
               <li className='pb-2'><Link href={"/legals/license"} className='hover:text-white transition duration-200 hover:underline'>Licence</Link></li>
             </ul>

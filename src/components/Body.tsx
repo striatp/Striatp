@@ -21,7 +21,7 @@ import ComponentMetadata from '@/types/componentTypes';
  * @embed.color #0f172a
  * @embed.image https://example.com/footer-image.png
 */
-const componentMetadata: ComponentMetadata = {
+export const componentMetadata: ComponentMetadata = {
   title: "Body Component",
   description: "This is the body wrapper for the Ravium Labs website.",
   author: "Ravium Labs",

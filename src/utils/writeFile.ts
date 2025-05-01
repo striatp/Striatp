@@ -5,8 +5,8 @@ import fs from 'fs/promises';
  *
  * @param path - The file path to write the data to.
  * @param data - The data to be written (will be stringified).
-*/
-export default async function writeFile(path: string, data: any): Promise<void> {
+ */
+export default async function writeFile<T>(path: string, data: T): Promise<void> {
   try {
     const JSONData = JSON.stringify(data, null, 2);
     await fs.writeFile(path, JSONData, { encoding: 'utf8' });
