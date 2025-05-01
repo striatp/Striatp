@@ -110,7 +110,7 @@ export async function POST(req: Request) {
   let Body;
   try {
     Body = await req.json();
-  } catch (error) {
+  } catch {
     return CreateErrorResponse('Invalid JSON format.', 400);
   }
   const ParsedBody = BodySchema.safeParse(Body);

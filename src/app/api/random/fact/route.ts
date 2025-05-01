@@ -3,6 +3,11 @@ import path from 'path';
 
 import ReadJsonFile from '@/utils/readJsonFile';
 
+// Define the expected structure of the JSON data
+interface FactsData {
+  facts: string[];
+}
+
 // Get the path of KeepIt's data
 const FactsFilePath: string = path.join(process.cwd(), 'src/data/random/facts.json');
 
@@ -18,10 +23,11 @@ const FactsFilePath: string = path.join(process.cwd(), 'src/data/random/facts.js
 */
 export async function GET() {
   // Get the KeepIt API data
-  const Facts = await ReadJsonFile(FactsFilePath);
-  const Fact = Array.isArray(Facts.facts) && Facts.facts.length > 0
+  const Facts = await ReadJsonFile(FactsFilePath) as FactsData; // Type assertion
+  const Fact: string | null = Array.isArray(Facts.facts) && Facts.facts.length > 0
     ? Facts.facts[Math.floor(Math.random() * Facts.facts.length)]
     : null;
+
   // Return the data to the client
-  return NextResponse.json({ data: [ { fact: Fact } ] });
+  return NextResponse.json({ data: [ { fact: Fact ?? "No fact available" } ] });
 }

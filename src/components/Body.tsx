@@ -1,6 +1,6 @@
 import { JSX } from 'react';
 import Children from '@children';
-import ComponentMetadata from '@/types/component-metadata';
+import ComponentMetadata from '@/types/componentTypes';
 
 /**
  * Metadata for the Footer Component.
@@ -21,7 +21,7 @@ import ComponentMetadata from '@/types/component-metadata';
  * @embed.color #0f172a
  * @embed.image https://example.com/footer-image.png
 */
-const componentMetadata: ComponentMetadata = {
+export const componentMetadata: ComponentMetadata = {
   title: "Body Component",
   description: "This is the body wrapper for the Ravium Labs website.",
   author: "Ravium Labs",

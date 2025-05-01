@@ -25,7 +25,7 @@ export default function Home(): JSX.Element {
             <section>
               <div>
                 <h2>Rejoignez notre communauté</h2>
-                <p>Contribuez à nos projets open source et participez à l'innovation technologique.</p>
+                <p>Contribuez à nos projets open source et participez à l&#39;innovation technologique.</p>
                 <Link href={"https://github.com/RaviumLabs"}>Découvrir sur GitHub</Link>
               </div>
               <Stats></Stats>

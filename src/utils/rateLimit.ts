@@ -18,7 +18,6 @@ const MAX_REQUESTS = 10;
 */
 export default function rateLimit(req: Request): boolean {
   const ip = req.headers.get('x-forwarded-for') || req.headers.get('remote-addr') || 'unknown';
-  const now = Date.now();
 
   if (!requestCounts.has(ip)) {
     requestCounts.set(ip, 1);

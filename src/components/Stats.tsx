@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import Container from '@/components/Container';
-import StatsCard from '@components/StatsCard';
 
 export default function Home() {
   const [data, setData] = useState(null); // State to store API response
   const [loading, setLoading] = useState(true); // State to handle loading state
-  const [error, setError] = useState(null); // State to handle errors
+  const [error, setError] = useState<string | null>(null); // State to handle errors
 
   useEffect(() => {
     // Function to fetch data from the API
@@ -17,13 +16,17 @@ export default function Home() {
         }
         const result = await response.json();
         setData(result); // Store the API response in state
-        console.log(result)
-      } catch (err: any) {
-        setError(err.message); // Handle errors
+        console.log(result);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message); // Handle errors
+        } else {
+          setError('An unknown error occurred'); // Fallback for non-Error objects
+        }
       } finally {
         setLoading(false); // Stop loading
       }
-    };
+    }
 
     fetchData(); // Call the fetch function
   }, []); // Empty dependency array ensures this runs only on page load
