@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+
 import Link from 'next/link';
 import Underline from '@hover/Underline';
 import Icon from '@components-types/Icon';

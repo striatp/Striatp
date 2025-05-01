@@ -8,7 +8,7 @@ import Twitter from '@/components/icons/Twitter';
 
 import Icon from "@components-types/Icon";
 
-import ComponentMetadata from '@/types/component-metadata';
+import ComponentMetadata from '@/types/componentTypes';
 
 const componentMetadata: ComponentMetadata = {
   title: "Footer Component",

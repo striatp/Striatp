@@ -1,6 +1,6 @@
 import { JSX } from 'react';
 import Children from '@children';
-import ComponentMetadata from '@/types/component-metadata';
+import ComponentMetadata from '@/types/componentTypes';
 
 /**
  * Metadata for the Footer Component.
