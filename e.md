@@ -9,33 +9,59 @@
   <img src="https://img.shields.io/github/license/tryforge/forgescript" alt="License" />
 </p>
 
-## ✨ What is ForgeCLI?
+## Table of Contents
 
-> `@tryforge/cli` is a powerful and user-friendly Command Line Interface that helps developers bootstrap, organize, and maintain **ForgeScript** projects — the scripting language used in [BotForge](https://botforge.dev).
-> Whether you're starting a new bot, organizing scripts, running tests, or releasing a package, ForgeCLI has your back.
+- [Introduction](#introduction)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Available Commands](#available-commands)
+  - [Command Reference](#command-reference)
+    - [init](#init)
+    - [generate](#generate)
+    - [run](#run)
+    - [test](#test)
+- [Project Structure](#project-structure)
+- [Configuration](#configuration)
+- [Testing](#testing)
+- [Secret Management](#secret-management)
+- [Documentation Generation](#documentation-generation)
+- [Development](#development)
+  - [Building](#building)
+  - [Releasing](#releasing)
+- [Contributing](#contributing)
+- [License](#license)
+- [Support](#support)
 
-## 🚀 Features
+## Introduction
 
-- 📦 **Project Bootstrapping** - Quickly scaffold new ForgeScript projects with `forge init`
-- 📁 **Smart Scaffolding** - Generate files and folders with proper structure using `forge generate`
-- 🔁 **Script Preview & Testing** - Test your scripts locally before deployment
-- 🧪 **Integrated Testing** - Run test suites with built-in test runner
-- 🔐 **Secret Management** - Securely store and manage tokens and credentials for your projects
-- 📜 **Metadata Extraction** - Automatically extract and manage project metadata
-- 🧰 **Extensible Plugin System** - Add custom functionality with plugins and script packs
-- 📡 **Intelligent Updates** - Check for updates with detailed version comparison
-- 📄 **Documentation Generation** - Create beautiful docs in Markdown or HTML format
-- ✅ **Typed Configuration** - Full TypeScript support with validation for your config files
-- 🔄 **Hot Reloading** - Automatically reload your scripts during development
-- 🚨 **Error Highlighting** - Clear error messages with syntax highlighting
-- 🌐 **Cross-Platform** - Works on Windows, macOS, and Linux
+`@tryforge/cli` is a powerful and user-friendly Command Line Interface that helps developers bootstrap, organize, and maintain **ForgeScript** projects — the scripting language used in [BotForge](https://botforge.dev).
 
-## 📋 Prerequisites
+Whether you're starting a new bot, organizing scripts, running tests, or releasing a package, ForgeCLI has your back.
+
+## Features
+
+- **Project Bootstrapping** - Quickly scaffold new ForgeScript projects with `forge init`
+- **Smart Scaffolding** - Generate files and folders with proper structure using `forge generate`
+- **Script Preview & Testing** - Test your scripts locally before deployment
+- **Integrated Testing** - Run test suites with built-in test runner
+- **Secret Management** - Securely store and manage tokens and credentials for your projects
+- **Metadata Extraction** - Automatically extract and manage project metadata
+- **Extensible Plugin System** - Add custom functionality with plugins and script packs
+- **Intelligent Updates** - Check for updates with detailed version comparison
+- **Documentation Generation** - Create documentation in Markdown or HTML format
+- **Typed Configuration** - Full TypeScript support with validation for your config files
+- **Hot Reloading** - Automatically reload your scripts during development
+- **Error Highlighting** - Clear error messages with syntax highlighting
+- **Cross-Platform** - Works on Windows, macOS, and Linux
+
+## Prerequisites
 
 - [Node.js](https://nodejs.org/) (v16.0.0 or higher)
 - npm, yarn, or pnpm package manager
 
-## 📦 Installation
+## Installation
 
 > [!TIP]
 > We recommend using pnpm for the best performance and disk space usage, but npm and yarn work great too!
@@ -57,7 +83,7 @@ You can verify your installation was successful by running:
 forge --version
 ```
 
-## 📖 Usage
+## Usage
 
 ```bash
 forge <command> [...options]
@@ -83,9 +109,9 @@ forge <command> [...options]
 > [!NOTE]
 > Run `forge help <command>` to see detailed usage information for any command.
 
-## 🛠️ Detailed Command Usage
+### Command Reference
 
-### `forge init`
+#### init
 
 Initialize a new ForgeScript project with all the necessary files and structure.
 
@@ -111,10 +137,7 @@ forge init discord-bot --template discord --typescript
 forge init slash-commands --template slash
 ```
 
-> [!TIP]
-> The templates come with ready-to-use examples to help you get started quickly!
-
-### `forge generate`
+#### generate
 
 Generate new files and folders with proper structure for your project.
 
@@ -145,7 +168,7 @@ forge generate command ban --template moderation
 forge generate test welcome
 ```
 
-### `forge run`
+#### run
 
 Run a ForgeScript file locally with simulated context.
 
@@ -174,7 +197,7 @@ forge run ./scripts/welcome.forge --variables "USER_ID=123456789"
 > [!IMPORTANT]
 > The `run` command creates a sandboxed environment that simulates the BotForge runtime, making testing much easier!
 
-### `forge test`
+#### test
 
 Run tests for your ForgeScript project.
 
@@ -199,7 +222,7 @@ forge test ./__tests__/welcome.test.ts --watch
 forge test --coverage
 ```
 
-## 🧠 Project Structure
+## Project Structure
 
 ForgeCLI creates and works with the following project structure:
 
@@ -229,7 +252,7 @@ your-forge-project/
 > [!NOTE]
 > This structure is customizable through the `forge.config.ts` file.
 
-## ⚙️ Configuration
+## Configuration
 
 ForgeCLI uses a `forge.config.ts` (or `.js`) file in your project root for configuration.
 
@@ -286,7 +309,7 @@ export default defineConfig({
 > [!TIP]
 > Use TypeScript for your config to get full IntelliSense and validation!
 
-## 🧪 Testing Your Scripts
+## Testing
 
 ForgeCLI supports TypeScript-based tests for your ForgeScript files. Tests are stored in the `__tests__` directory by default.
 
@@ -328,7 +351,7 @@ Run your tests with:
 forge test
 ```
 
-## 🔐 Managing Secrets
+## Secret Management
 
 ForgeCLI provides a secure way to manage tokens and secrets for your ForgeScript projects.
 
@@ -346,7 +369,7 @@ forge run ./scripts/bot.forge --with-secrets
 > [!CAUTION]
 > Never commit your `.forge/secrets` directory to version control. It's automatically added to `.gitignore` for your protection.
 
-## 📄 Generating Documentation
+## Documentation Generation
 
 ForgeCLI can generate documentation for your ForgeScript project in both Markdown and HTML formats.
 
@@ -354,4 +377,84 @@ ForgeCLI can generate documentation for your ForgeScript project in both Markdow
 # Generate Markdown documentation
 forge doc --format markdown --output ./docs
 
-# Generate HTML documentation
+# Generate HTML documentation with a custom theme
+forge doc --format html --output ./docs --theme modern
+
+# Generate documentation for a specific scope
+forge doc --scope commands --output ./docs/commands
+```
+
+The documentation generator extracts:
+- Script metadata and descriptions
+- Command usage information
+- Function documentation
+- Project structure overviews
+
+## Development
+
+### Building
+
+To build the CLI from source:
+
+```bash
+# Clone the repository
+git clone https://github.com/tryforge/CLI.git
+cd CLI
+
+# Install dependencies
+pnpm install
+
+# Build the project
+pnpm build
+
+# Link for local development
+pnpm link --global
+```
+
+### Releasing
+
+To create a new release:
+
+```bash
+# Update version
+pnpm version patch   # or major / minor
+
+# Push with tags
+git push --follow-tags
+```
+
+GitHub Actions will automatically publish to npm and create a GitHub release when tags matching the version pattern are pushed (configured in `.github/workflows/release.yml`).
+
+## Contributing
+
+We welcome contributions to ForgeCLI! Please:
+
+1. Review our [Code of Conduct](./CODE_OF_CONDUCT.md)
+2. Read the [Contributing Guide](./CONTRIBUTING.md)
+3. Fork the repository and create a feature branch
+4. Ensure tests pass with `pnpm test`
+5. Submit a pull request
+
+Development requirements:
+- Node.js 16+
+- pnpm (recommended) or another package manager
+- TypeScript knowledge
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE).
+
+## Support
+
+- [Documentation](https://docs.botforge.dev/cli)
+- [GitHub Issues](https://github.com/tryforge/CLI/issues)
+- [Discord Community](https://discord.gg/botforge)
+
+---
+
+<p align="center">
+  <img src="./assets/icon/cli.svg" alt="ForgeCLI Logo" width="30"/> 
+</p>
+<p align="center">
+  <strong>@tryforge/cli – Built for the BotForge scripting community</strong>
+</p>
