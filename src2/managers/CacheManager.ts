@@ -15,7 +15,7 @@ interface ClearedCacheResult <T> {
     data: T;
 };
 
-interface CacheMetadata Pick<CacheContent, 'createdAt' | 'updatedAt'> {
+interface CacheMetadata Pick<CacheContent<unknown>, 'createdAt' | 'updatedAt'> {
     createdAt: Date;
     updatedAt: Date;
 };
@@ -30,10 +30,10 @@ abstract class CacheScheme {
 
     abstract localCacheExists(): Promise<boolean>;
     abstract getCachePath(scope: CacheScope, path?: string): string;
-    abstract listCache(scope: CacheScope): Promise<string>;
+    abstract listCache(scope: CacheScope): Promise<string[]>;
     abstract getCacheSize(scope: CacheScope, path?: string): Promise<number>;
-    abstract hasCache(scope: CacheScope): Promise<boolean>;
-    abstract getCacheMetadata(scope: CacheScope, path?: string): Promise<
+    abstract hasCache(scope: CacheScope, path?: string): Promise<boolean>;
+    abstract getCacheMetadata(scope: CacheScope, path?: string): Promise<CacheMetadata | null>;
 };
 
 /**
