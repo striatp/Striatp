@@ -2,11 +2,23 @@ import os from 'os';
 import fs from 'fs/promises';
 import path from 'path';
 
+type CacheScope = 'User' | 'Workspace';
+
+interface ClearedCacheResult<T>{
+    success: boolean;
+    data: T;
+}
+
 abstract class CacheScheme {
     abstract LocalCachePath: string;
     abstract WorkspaceCachePath: string;
 
+    abstract writeCache(scope: CacheScope, path: string, data: object): Promise<boolean>;
+    abstract readCache<T>(scope: CacheScope, path: string): Promise<T | null>;
+    abstract clearCache<T>(scope: CacheScope, path?: string): Promise<ClearedCacheResult<T>>;
+
     abstract localCacheExists(): Promise<boolean>;
+    abstract getCachePath(scope: CacheScope, path?: string): string;
 };
 
 /**
