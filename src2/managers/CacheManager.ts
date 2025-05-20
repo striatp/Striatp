@@ -4,10 +4,21 @@ import path from 'path';
 
 type CacheScope = 'User' | 'Workspace';
 
-interface ClearedCacheResult<T>{
+interface CacheContent <T> {
+    createdAt: Date;
+    updatedAt: Date;
+    data: T
+};
+
+interface ClearedCacheResult <T> {
     success: boolean;
     data: T;
-}
+};
+
+interface CacheMetadata Pick<CacheContent, 'createdAt' | 'updatedAt'> {
+    createdAt: Date;
+    updatedAt: Date;
+};
 
 abstract class CacheScheme {
     abstract LocalCachePath: string;
@@ -19,6 +30,10 @@ abstract class CacheScheme {
 
     abstract localCacheExists(): Promise<boolean>;
     abstract getCachePath(scope: CacheScope, path?: string): string;
+    abstract listCache(scope: CacheScope): Promise<string>;
+    abstract getCacheSize(scope: CacheScope, path?: string): Promise<number>;
+    abstract hasCache(scope: CacheScope): Promise<boolean>;
+    abstract getCacheMetadata(scope: CacheScope, path?: string): Promise<
 };
 
 /**
