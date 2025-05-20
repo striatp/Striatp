@@ -6,7 +6,7 @@ abstract class CacheScheme {
     abstract LocalCachePath: string;
     abstract WorkspaceCachePath: string;
 
-    abstract localCacheExists: Promise<boolean>;
+    abstract localCacheExists(): Promise<boolean>;
 };
 
 /**
@@ -18,10 +18,11 @@ abstract class CacheScheme {
  * Compatible with Windows, macOS, and Linux via `os.homedir()`.
  */
 export class CacheManager extends CacheScheme {
-    private LocalCachePath: string;
-    private WorkspaceCachePath: string;
+    public LocalCachePath: string;
+    public WorkspaceCachePath: string;
 
     constructor(private WorkspaceRoot: string) {
+        super();
         this.LocalCachePath = path.join(os.homedir() || '', '.forge');
         this.WorkspaceCachePath = path.join(this.WorkspaceRoot, './forge');
     }
