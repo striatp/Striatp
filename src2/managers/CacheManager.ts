@@ -23,11 +23,11 @@ interface CacheMetadata Pick<CacheContent<unknown>, 'createdAt' | 'updatedAt'> {
 abstract class CacheScheme {
     abstract LocalCachePath: string;
     abstract WorkspaceCachePath: string;
-
+    // Main methods
     abstract writeCache(scope: CacheScope, path: string, data: object): Promise<boolean>;
     abstract readCache<T>(scope: CacheScope, path: string): Promise<T | null>;
     abstract clearCache<T>(scope: CacheScope, path?: string): Promise<ClearedCacheResult<T>>;
-
+    // Internal & main methods
     abstract localCacheExists(): Promise<boolean>;
     abstract getCachePath(scope: CacheScope, path?: string): string;
     abstract listCache(scope: CacheScope): Promise<string[]>;
