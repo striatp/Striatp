@@ -1,8 +1,5 @@
-import fs from 'fs/promises';
-import os from 'os';
-import path from 'path';
-
-import { Logger } from './Logger';
+// Local modules
+import { FileSystem } from "./FileSystem";
 
 /**
  * A type representing available caching scopes.
@@ -12,277 +9,61 @@ type CacheScope = 'user' | 'workspace';
 /**
  * An interface representing the content of a cache file object.
  */
-export interface CacheContent<T> {
-    updatedAt: Date;
-    data: T;
-};
-
-/**
- * An interface representing the object returned after a cache file being cleared.
- */
-interface ClearedCacheResult<T> {
-    success: boolean;
-    data: T;
-};
+interface CacheContent<T> {
+  updatedAt: Date;
+  data: T;
+}
 
 /**
  * An interface representing the metadata of a cache file.
  */
 interface CacheMetadata {
-    updatedAt: Date;
+  updatedAt: Date;
 }
 
 /**
- * An abstract scheme class representing the CacheManager class.
+ * An interface representing the CacheManager class.
  */
-abstract class CacheScheme {
-    abstract LocalCachePath: string;
-    abstract WorkspaceCachePath: string;
+interface CacheScheme {
+  WriteCache?<T>(
+    scope: CacheScope,
+    data: CacheContent<T>,
+    path?: string // Default: User scope path.
+  ): Promise<boolean>
 
-    abstract writeCache(scope: CacheScope, path: string, data: object): Promise<boolean>;
-    abstract readCache<T>(scope: CacheScope, path: string): Promise<T | null>;
-    abstract clearCache<T>(scope: CacheScope, path?: string): Promise<ClearedCacheResult<T>>;
+  ReadCache?<T>(
+    scope: CacheScope,
+    path?: string // Default: User scope path. 
+  ): Promise<CacheContent<T> | null>
 
-    abstract localCacheExists(): Promise<boolean>;
-    abstract getCachePath(scope: CacheScope, path?: string): string;
-    abstract hasCache(scope: CacheScope, path?: string): Promise<boolean>;
-    abstract getCacheMetadata(scope: CacheScope, path?: string): Promise<CacheMetadata | null>;
-};
+  ClearCache?(
+    scope: CacheScope,
+    deleteFile?: boolean, // Default: False
+    path?: string // Default: User scope path.
+  ): Promise<boolean>
+}
 
 /**
- * Manages local and workspace-specific cache directories.
+ * A class to manage local and workspace-located cache.
  */
-export class CacheManager extends CacheScheme {
-    public LocalCachePath: string;
-    public WorkspaceCachePath: string;
-
-    constructor(private WorkspaceRoot: string) {
-        super();
-        this.LocalCachePath = path.join(os.homedir() || '', '.forge');
-        this.WorkspaceCachePath = path.join(this.WorkspaceRoot, '.forge');
+export class CacheManager implements CacheScheme {
+  public static async WriteCache<T>(
+    scope: CacheScope,
+    data: T,
+    path?: string
+  ): Promise<boolean> {
+    // Example implementation: write cache data to a file using FileSystem
+    try {
+      const cacheContent: CacheContent<T> = {
+        updatedAt: new Date(),
+        data: data
+      };
+      const filePath = path || (scope === 'user' ? './user-cache.json' : './workspace-cache.json');
+      await FileSystem.WriteFile(filePath, JSON.stringify(cacheContent));
+      return true;
+    } catch (error) {
+      // Handle error (e.g., log it)
+      return false;
     }
-
-    /**
-     * Ensures the directory exists, returns true if it exists/was created successfully.
-     */
-    public async localCacheExists(): Promise<boolean> {
-        try {
-            await fs.mkdir(this.LocalCachePath, { recursive: true });
-            return true;
-        } catch {
-            Logger.error(`Failed to ensure local cache directory: ${this.LocalCachePath}.`);
-            return false;
-        }
-    }
-
-    /**
-     * Ensures a workspace cache directory exists.
-     */
-    private async workspaceCacheExists(): Promise<boolean> {
-        try {
-            await fs.mkdir(this.WorkspaceCachePath, { recursive: true });
-            return true;
-        } catch {
-            Logger.error(`Failed to ensure workspace cache directory: ${this.WorkspaceCachePath}.`)
-            return false;
-        }
-    }
-
-    /**
-     * Gets the full path for a cache entry.
-     */
-    public getCachePath(scope: CacheScope, cachePath?: string): string {
-        const BasePath = scope === 'user' ? this.LocalCachePath : this.WorkspaceCachePath;
-
-        if (!cachePath) {
-            return BasePath;
-        }
-
-        return path.join(BasePath, cachePath);
-    }
-
-    /**
-     * Writes data to cache.
-     */
-    public async writeCache(scope: CacheScope, cachePath: string, data: object): Promise<boolean> {
-        try {
-            if (scope === 'user') {
-                await this.localCacheExists();
-            } else {
-                await this.workspaceCacheExists();
-            }
-
-            const FullPath = this.getCachePath(scope, cachePath.endsWith('.json') ? cachePath : `${cachePath}.json`);
-
-            const ParentDirectory = path.dirname(FullPath);
-            await fs.mkdir(ParentDirectory, { recursive: true });
-
-            const CacheContent: CacheContent<typeof data> = {
-                updatedAt: new Date(),
-                data
-            };
-
-            if (await this.hasCache(scope, cachePath)) {
-                const ExistingCache = await this.readCache<any>(scope, cachePath);
-                if (ExistingCache && ExistingCache.updatedAt) {
-                    CacheContent.updatedAt = new Date(ExistingCache.updatedAt);
-                }
-            }
-
-            // Write the file.
-            await fs.writeFile(
-                FullPath,
-                JSON.stringify(CacheContent, null, 2),
-                'utf-8'
-            );
-
-            return true;
-        } catch {
-            Logger.error(`Failed to write to cache: ${cachePath}.`)
-            return false;
-        }
-    }
-
-    /**
-     * Reads data from cache.
-     */
-    public async readCache<T>(scope: CacheScope, cachePath: string): Promise<T | null> {
-        try {
-            const FullPath = this.getCachePath(scope, cachePath);
-            const FileContent = await fs.readFile(FullPath, 'utf-8');
-            const CacheContent = JSON.parse(FileContent) as CacheContent<T>;
-
-            return CacheContent.data;
-        } catch {
-            return null;
-        }
-    }
-
-    /**
-     * Checks if cache exists at the given path.
-     */
-    public async hasCache(scope: CacheScope, cachePath?: string): Promise<boolean> {
-        try {
-            const FullPath = this.getCachePath(scope, cachePath);
-            await fs.access(FullPath);
-            return true;
-        } catch {
-            return false;
-        }
-    }
-
-    /**
-     * Lists all cache entries in the specified scope.
-     */
-    public async listCache(scope: CacheScope): Promise<string[]> {
-        try {
-            const BasePath = this.getCachePath(scope);
-
-            const listJsonFiles = async (dirPath: string, baseDir: string): Promise<string[]> => {
-                const Entries = await fs.readdir(dirPath, { withFileTypes: true });
-
-                const Files: string[] = [];
-
-                for (const entry of Entries) {
-                    const fullPath = path.join(dirPath, entry.name);
-                    const relativePath = path.relative(baseDir, fullPath);
-
-                    if (entry.isDirectory()) {
-                        const nestedFiles = await listJsonFiles(fullPath, baseDir);
-                        Files.push(...nestedFiles);
-                    } else if (entry.isFile() && entry.name.endsWith('.json')) {
-                        Files.push(relativePath);
-                    }
-                }
-
-                return Files;
-            };
-
-            if (scope === 'user') {
-                await this.localCacheExists();
-            } else {
-                await this.workspaceCacheExists();
-            }
-
-            return await listJsonFiles(BasePath, BasePath);
-        } catch {
-            Logger.error(`Failed to list cache for scope: ${scope}.`)
-            return [];
-        }
-    }
-
-    /**
-     * Gets metadata for a cache entry.
-     */
-    public async getCacheMetadata(scope: CacheScope, cachePath?: string): Promise<CacheMetadata | null> {
-        try {
-            if (!cachePath) {
-                return null;
-            }
-
-            const FullPath = this.getCachePath(scope, cachePath);
-            const FileContent = await fs.readFile(FullPath, 'utf-8');
-            const CacheContent = JSON.parse(FileContent) as CacheContent<unknown>;
-
-            return {
-                updatedAt: new Date(CacheContent.updatedAt)
-            };
-        } catch {
-            return null;
-        }
-    }
-
-    /**
-     * Clears cache entries.
-     */
-    public async clearCache<T>(scope: CacheScope, cachePath?: string): Promise<ClearedCacheResult<T>> {
-        try {
-            if (cachePath) {
-                const fullPath = this.getCachePath(scope, cachePath);
-                let data: T | null = null;
-
-                try {
-                    data = await this.readCache<T>(scope, cachePath);
-                } catch { }
-
-                await fs.unlink(fullPath);
-
-                return {
-                    success: true,
-                    data: data as T
-                };
-            }
-            else {
-                const basePath = scope === 'user' ? this.LocalCachePath : this.WorkspaceCachePath;
-
-                try {
-                    await fs.access(basePath);
-                    await fs.rm(basePath, { recursive: true, force: true });
-
-                    if (scope === 'user') {
-                        await this.localCacheExists();
-                    } else {
-                        await this.workspaceCacheExists();
-                    }
-                } catch {
-                    if (scope === 'user') {
-                        await this.localCacheExists();
-                    } else {
-                        await this.workspaceCacheExists();
-                    }
-                }
-
-                return {
-                    success: true,
-                    data: {} as T
-                };
-            }
-        } catch (error) {
-            Logger.error(`Failed to clear cache: ${scope}/${cachePath || 'all'}.`)
-            return {
-                success: false,
-                data: {} as T
-            };
-        }
-    }
+  }
 }
