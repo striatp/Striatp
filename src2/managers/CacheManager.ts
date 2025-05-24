@@ -57,6 +57,17 @@ interface CacheScheme {
     scope: CacheScope,
     deleteFiles?: boolean
   ): Promise<boolean>;
+
+  GetCacheMetadata?(
+    scope: CacheScope,
+    path: string
+  ): Promise<CacheMetadata>;
+
+  MigrateCache?(
+    fromScope: CacheScope,
+    toScope: CacheScope,
+    path: string
+  ): Promise<boolean>;
 }
 
 /**
