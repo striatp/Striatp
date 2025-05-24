@@ -27,20 +27,36 @@ interface CacheMetadata {
 interface CacheScheme {
   WriteCache?<T>(
     scope: CacheScope,
-    data: CacheContent<T>,
-    path?: string // Default: User scope path.
+    path: string,
+    data: CacheContent<T>
   ): Promise<boolean>
 
   ReadCache?<T>(
     scope: CacheScope,
-    path?: string // Default: User scope path. 
+    path: string
   ): Promise<CacheContent<T> | null>
 
   ClearCache?(
     scope: CacheScope,
+    path: string,
     deleteFile?: boolean, // Default: False
-    path?: string // Default: User scope path.
   ): Promise<boolean>
+
+  CacheExists?<T>(
+    scope: CacheScope,
+    path: string
+  ): Promise<boolean>;
+
+  SetCacheExpiry?<T>(
+    scope: CacheScope,
+    path: string,
+    expiryTime: number
+  ): Promise<boolean>;
+
+  ClearAllCache?(
+    scope: CacheScope,
+    deleteFiles?: boolean
+  ): Promise<boolean>;
 }
 
 /**
