@@ -36,7 +36,7 @@ that run these tools automatically.
 - Use 2 spaces for indentation
 - Use single quotes
 - Semicolons at the end of statements
-- Max line length: 100 characters
+- Max line length: 60 characters
 
 ## Contributing
 
