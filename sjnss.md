@@ -5,7 +5,7 @@
 
 <!-- Title -->
 <h1 align="center" style="border-bottom: none;">@tryforge/cli</h1>
-
+<hr/>
 <!-- Tagline -->
 <p align="center"><strong>The all-in-one command-line toolkit for ForgeScript developers.</strong></p>
 
