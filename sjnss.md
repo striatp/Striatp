@@ -50,11 +50,7 @@ testing, linting, and security checks on every commit and pull request.</p>
   </a>
 </p>
 
-<br/>
-
 ---
-
-<br/>
 
 <h2 align="center" style="border-bottom: none;">What is a CLI?</h2>
 
