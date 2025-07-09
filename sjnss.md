@@ -52,6 +52,7 @@
   </ul>
 </div>
 
+<div align="center">
 - [What is @tryforge/cli?](#github-actions)
 - [Why Use a CLI?](#why-use-a-cli)
 - [Key Features](#key-features)
@@ -76,6 +77,7 @@
 - [License](#license)
 - [Support](#support)
 - [Code of Conduct](#code-of-conduct)
+</div>
 
 <br/>
 
