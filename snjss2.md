@@ -164,6 +164,39 @@ testing, linting, and security checks on every commit and pull request.</p>
 ---
 
 <br/>
+
+<!-- Installation -->
+<div id="user-content-toc">
+  <ul align="center" style="list-style: none; padding: 0; margin: 0;">
+    <summary>
+      <h2><strong>Installation</strong></h2>
+    </summary>
+  </ul>
+</div>
+
+<p align="center">Install the CLI globally using your preferred package manager:</p>
+
+```bash
+# Using npm
+npm install -g @tryforge/cli
+
+# Using yarn
+yarn global add @tryforge/cli
+
+# Using pnpm
+pnpm add -g @tryforge/cli
+```
+
+<p align="center">Verify the installation:</p>
+
+```bash
+forge --version
+```
+
+<br/>
+
+---
+
 <br/>
 
 <div id="user-content-toc">
