@@ -45,42 +45,37 @@
 <br/>
 
 <div id="user-content-toc">
-  <ul align="center" style="list-style: none; padding: 0; margin: 0;">
+  <ul style="list-style: none; padding: 0; margin: 0;">
     <summary>
       <h2><strong>Table of Contents</strong></h2>
     </summary>
   </ul>
 </div>
 
-<div align="center">
-  <ul style="list-style: none; padding: 0; margin: 0;">
-    <li>What is @tryforge/cli?</li>
-    <li>Why Use a CLI?</li>
-    <li>Key Features</li>
-    <li>GitHub Actions</li>
-    <li>Installation</li>
-    <li>Quick Start</li>
-    <li>Commands</li>
-    <ul>
-      <li>Project Management</li>
-      <li>Code Generation</li>
-      <li>Development Tools</li>
-      <li>Deployment</li>
-    </ul>
-    <li>Configuration</li>
-    <li>Use Cases</li>
-    <li>How It Works</li>
-    <li>Benefits</li>
-    <li>Project History</li>
-    <li>Code Style</li>
-    <li>Contributing</li>
-    <li>Team</li>
-    <li>Versioning</li>
-    <li>License</li>
-    <li>Support</li>
-    <li>Code of Conduct</li>
-  </ul>
-</div>
+- [What is @tryforge/cli?](#github-actions)
+- [Why Use a CLI?](#why-use-a-cli)
+- [Key Features](#key-features)
+- [GitHub Actions](#github-actions)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Commands](#commands)
+  - [Project Management](#project-management)
+  - [Code Generation](#code-generation)
+  - [Development Tools](#development-tools)
+  - [Deployment](#deployment)
+- [Configuration](#configuration)
+- [Use Cases](#use-cases)
+- [How It Works](#how-it-works)
+- [Benefits](#benefits)
+- [Project History](#project-history)
+- [Roadmap](#roadmap)
+- [Code Style](#code-style)
+- [Contributing](#contributing)
+- [Team](#team)
+- [Versioning](#versioning)
+- [License](#license)
+- [Support](#support)
+- [Code of Conduct](#code-of-conduct)
 
 <br/>
 
