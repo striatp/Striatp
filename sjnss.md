@@ -1,7 +1,7 @@
 <!-- Head -->
 <p align="center"><img src="./assets/icon/cli.svg" alt="ForgeCLI Logo" width="180" /></p>
 <h1 align="center">@tryforge/cli</h1>
-
+===
 <!-- Hero -->
 <p align="center">The official CLI tool for building, managing and scaling ForgeScript projects</p>
 
