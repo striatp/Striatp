@@ -16,7 +16,7 @@
   <a href="https://github.com/tryforge/CLI/blob/main/LICENSE"><img src="https://img.shields.io/github/license/tryforge/CLI?style=for-the-badge&logo=github&logoColor=white&label=License&color=090A16" alt="License"/></a>
 </p>
 
-## GitHub Actions
+<h2 align="center">GitHub Actions</h2>
 
 <!-- Workflows -->
 <p align="center">
