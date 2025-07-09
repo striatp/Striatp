@@ -45,26 +45,6 @@
     <summary>
       <h2><strong>Table of Contents</strong></h2>
     </summary>
-    <li><a href="#what-is-tryforgecli">What is @tryforge/cli?</a></li>
-    <li><a href="#why-use-a-cli">Why Use a CLI?</a></li>
-    <li><a href="#key-features">Key Features</a></li>
-    <li><a href="#github-actions">GitHub Actions</a></li>
-    <li><a href="#installation">Installation</a></li>
-    <li><a href="#quick-start">Quick Start</a></li>
-    <li><a href="#commands">Commands</a></li>
-    <li><a href="#configuration">Configuration</a></li>
-    <li><a href="#use-cases">Use Cases</a></li>
-    <li><a href="#how-it-works">How It Works</a></li>
-    <li><a href="#benefits">Benefits</a></li>
-    <li><a href="#project-history">Project History</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#code-style">Code Style</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#team">Team</a></li>
-    <li><a href="#versioning">Versioning</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#support">Support</a></li>
-    <li><a href="#code-of-conduct">Code of Conduct</a></li>
   </ul>
 </div>
 
@@ -131,18 +111,35 @@ testing, linting, and security checks on every commit and pull request.</p>
 
 <br/>
 
+<!-- What is a CLI? -->
 <h2 align="center">What is a CLI?</h2>
 
 <p align="center">A CLI, or Command Line Interface, is a text-based interface that allows users to interact with a computer or software application using commands and instructions. It is a powerful tool that can help you automate repetitive tasks, manage files and directories, and perform other tasks that would otherwise require manual intervention.</p>
 
 <br/>
 
+<!-- Why use a CLI? -->
+<h2 align="center">Why use a CLI?</h2>
+
+<p align="center">Using a CLI can help you automate repetitive tasks, manage files and directories, and perform other tasks that would otherwise require manual intervention. It can also help you save time and reduce errors.</p>
+
+<br/>
+
+<!-- What is ForgeCLI? -->
 <h2 align="center">What is ForgeCLI?</h2>
 
 <p align="center"><code>@tryforge/cli</code> is the official command-line interface for developers working with <strong>ForgeScript</strong>, the powerful framework used in the BotForge ecosystem. Whether you're scaffolding a new bot, creating commands, checking your code's quality, automating tasks, linting your code, formatting your code, or fetching documentation, this CLI helps you save time, reduce boilerplate, and automate repetitive tasks.</p>
 
 <br/>
 
+<!-- Why use ForgeCLI? -->
+<h2 align="center">Why use ForgeCLI?</h2>
+
+<p align="center">ForgeCLI is a CLI tool that helps you scaffold projects, generate ForgeScript snippets, and automate tasks. It has over 100 features and commands to help you manage your projects and automate your tasks.</p>
+
+<br/>
+
+<!-- Key Features -->
 <h2 align="center">Key Features</h2>
 
 <p align="center">- Project scaffolding & setup
