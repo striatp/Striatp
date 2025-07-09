@@ -17,8 +17,8 @@
 
 ---
   <!-- Workflows -->
-  <a href="https://github.com/tryforge/CLI/actions"><img src="https://img.shields.io/github/actions/workflow/status/tryforge/CLI/linter.yml?branch=main&style=for-the-badge&logo=github&label=Tests" alt="Tests"></a>
-  <a href="https://github.com/tryforge/CLI/actions"><img src="https://img.shields.io/github/actions/workflow/status/tryforge/CLI/security.yml?branch=main&style=for-the-badge&logo=github&label=Tests" alt="Tests"></a>
+  <a href="https://github.com/tryforge/CLI/actions"><img src="https://img.shields.io/github/actions/workflow/status/tryforge/CLI/linter.yml?branch=main&style=for-the-badge&logo=github&label=Linting" alt="Tests"></a>
+  <a href="https://github.com/tryforge/CLI/actions"><img src="https://img.shields.io/github/actions/workflow/status/tryforge/CLI/security.yml?branch=main&style=for-the-badge&logo=github&label=Security" alt="Security"></a>
   <a href="https://github.com/tryforge/CLI/actions"><img src="https://img.shields.io/github/actions/workflow/status/tryforge/CLI/test.yml?branch=main&style=for-the-badge&logo=github&label=Tests" alt="Tests"></a>
   <!-- Codecov -->
   <a href="https://codecov.io/gh/tryforge/CLI"><img src="https://img.shields.io/codecov/c/github/tryforge/CLI?style=for-the-badge&logo=codecov&logoColor=white" alt="Codecov"/></a>
