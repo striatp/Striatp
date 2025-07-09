@@ -5,7 +5,7 @@
 
 <!-- Title -->
 <div id="user-content-toc">
-  <ul align="center" style="list-style: none;">
+  <ul align="center" style="list-style: none; padding: 0; margin: 0;">
     <summary>
       <h1><strong>@tryforge/cli</strong></h1>
     </summary>
