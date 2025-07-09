@@ -4,7 +4,7 @@
 </p>
 
 <!-- Title -->
-<h1 align="center">@tryforge/cli</h1>
+<h1 align="center" style="border-bottom: none;">@tryforge/cli</h1>
 
 <!-- Tagline -->
 <p align="center"><strong>The all-in-one command-line toolkit for ForgeScript developers.</strong></p>
@@ -28,7 +28,11 @@
   <a href="https://github.com/tryforge/CLI/blob/main/LICENSE"><img src="https://img.shields.io/github/license/tryforge/CLI?style=for-the-badge&logo=github&logoColor=white&label=License&color=090A16" alt="License"/></a>
 </p>
 
+<br/>
+
 ---
+
+<br/>
 
 <h3 align="center">GitHub Actions</h3>
 
@@ -50,7 +54,11 @@ testing, linting, and security checks on every commit and pull request.</p>
   </a>
 </p>
 
+<br/>
+
 ---
+
+<br/>
 
 <h2 align="center">What is a CLI?</h2>
 
