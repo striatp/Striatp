@@ -4,8 +4,8 @@
 </p>
 
 <!-- Title -->
-<h1 align="center" style="border-bottom: none;">@tryforge/cli</h1>
-<hr/>
+<h1 align="center" style="border-bottom: 0px solid transparent !important;">@tryforge/cli</h1>
+
 <!-- Tagline -->
 <p align="center"><strong>The all-in-one command-line toolkit for ForgeScript developers.</strong></p>
 
