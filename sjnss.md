@@ -52,19 +52,19 @@ testing, linting, and security checks on every commit and pull request.</p>
 
 ---
 
-<h2 align="center" style="border-bottom: none;">What is a CLI?</h2>
+<h2 align="center">What is a CLI?</h2>
 
 <p align="center">A CLI, or Command Line Interface, is a text-based interface that allows users to interact with a computer or software application using commands and instructions. It is a powerful tool that can help you automate repetitive tasks, manage files and directories, and perform other tasks that would otherwise require manual intervention.</p>
 
 <br/>
 
-<h2 align="center" style="border-bottom: none;">What is ForgeCLI?</h2>
+<h2 align="center">What is ForgeCLI?</h2>
 
 <p align="center"><code>@tryforge/cli</code> is the official command-line interface for developers working with <strong>ForgeScript</strong>, the powerful framework used in the BotForge ecosystem. Whether you're scaffolding a new bot, creating commands, checking your code's quality, automating tasks, linting your code, formatting your code, or fetching documentation, this CLI helps you save time, reduce boilerplate, and automate repetitive tasks.</p>
 
 <br/>
 
-<h2 align="center" style="border-bottom: none;">Key Features</h2>
+<h2 align="center">Key Features</h2>
 
 <p align="center">- Project scaffolding & setup
 - ForgeScript snippet generators
