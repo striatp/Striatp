@@ -7,7 +7,7 @@
 <div id="user-content-toc">
   <ul align="center" style="list-style: none;">
     <summary>
-      <h1><strong>@tryforge/cli<strong/></h1>
+      <h1><strong>@tryforge/cli</strong></h1>
     </summary>
   </ul>
 </div>
@@ -40,7 +40,13 @@
 
 <br/>
 
-<h3 align="center">GitHub Actions</h3>
+<div id="user-content-toc">
+  <ul align="center" style="list-style: none;">
+    <summary>
+      <h2><strong>GitHub Actions</strong></h2>
+    </summary>
+  </ul>
+</div>
 
 <p align="center">Our CI/CD pipeline ensures code quality and reliability through automated
 testing, linting, and security checks on every commit and pull request.</p>
