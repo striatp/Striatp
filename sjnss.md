@@ -54,6 +54,8 @@ testing, linting, and security checks on every commit and pull request.</p>
 
 ---
 
+<br/>
+
 <h2 align="center" style="border-bottom: none;">What is a CLI?</h2>
 
 <p align="center">A CLI, or Command Line Interface, is a text-based interface that allows users to interact with a computer or software application using commands and instructions. It is a powerful tool that can help you automate repetitive tasks, manage files and directories, and perform other tasks that would otherwise require manual intervention.</p>
