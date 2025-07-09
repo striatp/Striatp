@@ -40,8 +40,51 @@
 
 <br/>
 
+---
+
+<br/>
+
 <div id="user-content-toc">
-  <ul align="center" style="list-style: none;">
+  <ul align="center" style="list-style: none; padding: 0; margin: 0;">
+    <summary>
+      <h2><strong>Table of Contents</strong></h2>
+    </summary>
+  </ul>
+</div>
+
+- [What is @tryforge/cli?](#github-actions)
+- [Why Use a CLI?](#why-use-a-cli)
+- [Key Features](#key-features)
+- [GitHub Actions](#github-actions)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Commands](#commands)
+  - [Project Management](#project-management)
+  - [Code Generation](#code-generation)
+  - [Development Tools](#development-tools)
+  - [Deployment](#deployment)
+- [Configuration](#configuration)
+- [Use Cases](#use-cases)
+- [How It Works](#how-it-works)
+- [Benefits](#benefits)
+- [Project History](#project-history)
+- [Roadmap](#roadmap)
+- [Code Style](#code-style)
+- [Contributing](#contributing)
+- [Team](#team)
+- [Versioning](#versioning)
+- [License](#license)
+- [Support](#support)
+- [Code of Conduct](#code-of-conduct)
+
+<br/>
+
+---
+
+<br/>
+
+<div id="user-content-toc">
+  <ul align="center" style="list-style: none; padding: 0; margin: 0;">
     <summary>
       <h2><strong>GitHub Actions</strong></h2>
     </summary>
