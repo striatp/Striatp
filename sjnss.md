@@ -40,15 +40,31 @@
 
 <br/>
 
----
-
-<br/>
-
 <div id="user-content-toc">
   <ul style="list-style: none; padding: 0; margin: 0;">
     <summary>
       <h2><strong>Table of Contents</strong></h2>
     </summary>
+    <li><a href="#what-is-tryforgecli">What is @tryforge/cli?</a></li>
+    <li><a href="#why-use-a-cli">Why Use a CLI?</a></li>
+    <li><a href="#key-features">Key Features</a></li>
+    <li><a href="#github-actions">GitHub Actions</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#quick-start">Quick Start</a></li>
+    <li><a href="#commands">Commands</a></li>
+    <li><a href="#configuration">Configuration</a></li>
+    <li><a href="#use-cases">Use Cases</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#project-history">Project History</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#code-style">Code Style</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#versioning">Versioning</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#support">Support</a></li>
+    <li><a href="#code-of-conduct">Code of Conduct</a></li>
   </ul>
 </div>
 
