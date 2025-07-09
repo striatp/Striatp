@@ -7,7 +7,7 @@
 <div id="user-content-toc">
   <ul align="center" style="list-style: none;">
     <summary>
-      <h1>@tryforge/cli</h1>
+      <h1><strong>@tryforge/cli<strong/></h1>
     </summary>
   </ul>
 </div>
